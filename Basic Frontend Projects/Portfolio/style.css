@@ -1,0 +1,169 @@
+body{
+    font: Lato, sans-serif;
+}
+
+/* navbar */
+.navbar-default {
+    background-color:black;
+    border: black;
+    padding:inherit;
+}
+
+/* title */
+.navbar-default .navbar-brand {
+    font-size: 3.46667rem;
+    font-family: 'Vast Shadow', cursive;
+    text-transform: uppercase;
+    margin-left: 10px !important;
+    color:white;
+}
+
+.navbar-default .navbar-brand:visited{
+    color:white;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:active
+{
+    color: #E7E700;
+}
+
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: white;
+    margin-right: 30px;
+    font-size: 15px;
+    font-family: 'Lato', sans-serif;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:active {
+    color: #555;
+    background-color: #E7E700;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #E7E700;
+}
+
+/*carousel*/
+.carousel-inner{
+    background-color:black;
+}
+
+.carousel-inner img {
+    -webkit-filter: grayscale(90%);
+    filter: grayscale(90%); /* make all photos black and white */
+    width: 90rem; /* Set width */
+    margin: auto;
+    padding:50px;
+}
+
+.carousel-caption {
+    color: #fff !important;
+    padding: 0px 0px 70px 0px;
+}
+
+@media (max-width: 600px) {
+    .carousel-caption {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+}
+
+/*Portfolio*/
+.container{
+    margin-top: 30px;
+    margin-bottom: 70px;
+text-align: center;
+}
+
+ .container h2 {
+    font: Lato, sans-serif;
+}
+
+ .container > p {
+    font: Lato, sans-serif;
+       margin: 0px 35px 35px 35px;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+}
+
+/*about*/
+.bg-gray{
+    background-color: ghostwhite;
+}
+
+.logo {
+    font-size: 200px;
+}
+
+@media screen and (max-width: 768px) {
+    .col-sm-4 {
+        text-align: center;
+        margin: 25px 0px;
+    }
+}
+ .container-fluid h2 {
+    margin: 70px 0px 30px 0px;
+    font: Lato, sans-serif;
+    text-align: center;
+}
+.container-fluid .row .col-sm-8{
+    padding: 0px 25px 15px 40px;
+    font-stretch:expanded;
+    text-align: justify;
+
+}.container-fluid .row .col-sm-8 .btn{
+    margin: 10px 0px 70px 0px;
+
+}
+
+/*contact*/
+ .container h2 {
+    margin: 70px 0px 30px 0px;
+    font: Lato, sans-serif;
+    text-align: center;
+}
+.container .col-sm-5{
+    text-align: left;
+}
+
+/*footer*/
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #f4511e;
+}
+
+.social-media ul{
+    margin: 20px 35px 30px 0px;
+}
+
+.social-media li{
+    list-style: none;
+     display: inline;
+    text-align: center;
+}
+
+.social-media img{
+    max-height: 20px;
+max-width: 20px;
+width: 20px;
+height: 20px;
+    margin: 0px 10px 0px 15px;
+}
+
+footer{
+    padding: 20px;
+}
+
+footer .glyphicon{
+    color: black;
+}

@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to left, #232526, #414345);
+}
+
+h1
+{
+    margin-top: 50px;
+    padding: 50px;
+    text-align: center;
+    font-size: 50px;
+    font-style: Helvetica Neue, Geneva, sans-serif;
+    color: #aa8f00;
+}
+
+.input-div
+{
+    margin: 5px auto;
+    width: 40%;
+}
+
+.enjoy-css-input
+{
+    width: 100%;
+    height: 40px;
+    background-color: #708080;
+    box-sizing: content-box;
+    padding: 10px auto;
+    border: 1px solid #b7b7b7;
+    border-radius: 3px;
+    font: normal 16px/0 Helvetica Neue, Geneva, sans-serif;
+    box-shadow: 1px 1px 2px -1px rgba(140, 140, 140, 1);
+
+}
+
+.button-div
+{
+    margin: 5px auto;
+    width: 230px;
+}
+
+.enjoy-css-input:hover
+{
+    box-shadow: 1px 1px 1px 1px #009fd4;
+}
+
+.enjoy-css-search,
+.enjoy-css-random {
+    margin: 5px auto;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 2px;
+    font: normal normal bold 15px/0 Tahoma, Geneva, sans-serif;
+    color: rgba(178, 182, 183, 1);
+    background: rgba(229, 229, 229, 1);
+    border: 2px solid #009fd4;
+}
+
+.enjoy-css-search:hover,
+.enjoy-css-random:hover,
+.enjoy-css-random:active
+{
+    color: rgba(0, 0, 0, 1);
+    border: 0px 0px 3px 3px rgba(52, 85, 219, 1);
+    box-shadow: 0px 0px 1px 2px rgba(52, 85, 219, 1);
+}
+
+#list
+{
+    margin: 0 auto;
+    font: normal Helvetica Neue, Geneva, sans-serif;
+}
+
+ul {
+    padding: 0;
+}
+
+li
+{
+    border-color: red;
+    background-color: #e6ffff;
+    margin: 15px auto;
+    padding: 5px 25px 10px 25px;
+    list-style-type: none;
+    width: 60%;
+}
+
+li:hover
+{
+    border-color: red;
+    background-color: #ff6666;
+    margin: 15px auto;
+    border-left-color: #ff4d4d;
+    border-left-width: 20px;
+    box-shadow: 1px 3px 10px 5px #009fd4;
+    color: white;
+}
+
+li > a:hover,
+li > a:active,
+li > a:link
+{
+    text-decoration: none;
+}
+
+@media screen and (max-width:581px)
+{
+    h1
+    {
+        font-size: 30px;
+    }
+    .input-div
+    {
+        width: 70%;
+    }
+}

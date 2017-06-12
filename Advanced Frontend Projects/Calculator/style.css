@@ -1,0 +1,107 @@
+body {
+    background-color: #CACCCB;
+    font-family: Orbitron, sans-serif;
+}
+
+.container {
+    margin: 100px auto;
+}
+
+.calculator {
+    margin: auto;
+    height: 430px;
+    width: 330px;
+    background-color: #F3EEE7;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: inset 5px 0 10px -5px #635e61, inset -5px 0 10px -5px #635e61, inset 0px -5px 10px -2px #635e61, 0 0 1px 2px #635e61, 0 10px 20px 0 #494547;
+}
+
+.title {
+    margin: 5px auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.output {
+    margin: auto;
+    width: 90%;
+    border-radius: 5px;
+    background-color: #c3c2ab;
+    border: 2px solid #b4b39d;
+    box-shadow: inset 1px -2px 100px #b2b292;
+}
+
+#main {
+    height: 50px;
+    text-align: right;    
+    font-size: 40px;
+    padding-bottom: 10px;
+    margin-right: 5px;
+}
+
+#secondary {
+    height: 30px;
+    text-align: right;
+    margin-right: 5px;
+    color: gray;
+}
+
+#row {
+    margin: 20px 0px 5px 11px;
+}
+
+button {
+    color: #fff;
+    font-family: inherit;
+    border-radius: 8px;
+    border: none;
+    background-color: #3a3a3a;
+    margin: 0 4px 10px 8px;
+    height: 40px;
+    width: 60px;
+    box-shadow: 0px 3px 0px 0px #222121, inset -1px -3px 10px 1px #515151;
+    cursor: pointer;
+}
+
+button,
+button:hover,
+button:active,
+button:visited {
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+.red {
+    font-size: 14px;
+    background-color: #a72d45;
+    box-shadow: 0px 3px 0px 0px #671c2a;
+}
+
+button.red:active {
+    background-color: #a72d45;
+    box-shadow: 0px 0px 0px 0px;
+    transform: translateY(3px);
+}
+
+button:active {
+    background-color: #3a3a3a;
+    box-shadow: 0px 0px 0px 0px;
+    transform: translateY(3px);
+}
+
+#equals {
+    width: 137px !important;
+}
+
+#copy{
+    text-align: center;
+}
+@media screen and (max-width: 767px) {
+    .tg-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: auto 0px;
+    }
+}

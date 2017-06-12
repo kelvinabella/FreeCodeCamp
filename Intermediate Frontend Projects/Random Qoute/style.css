@@ -1,0 +1,58 @@
+.this-center {
+    background-color:ghostwhite;
+    border-radius: 5px;
+    margin-top: 15% !important;
+    text-align: center;
+    padding:25px;
+}
+
+h3{
+    font-size: 30px; 
+font-family: 'Taviraj', serif;
+}
+
+h5{
+    font-size: 20px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-align: right;
+    margin-right: inherit;
+}
+
+body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+}
+
+h3:before {
+    content:'\f10d';
+    font-family:'FontAwesome';
+    font-size:30px;
+    position:relative;
+    display:inline-flex;
+    margin-right:10px;
+}
+
+.buttons{
+    margin-top:30px;
+}
+
+#newquote{
+    float: right;
+}
+
+#twitter{
+    float: left;
+}
+
+.footer-text{
+    text-align: center;
+    margin-top: 200px;
+    color: red;
+    float: inherit;
+}
+
+a:active,a:hover,a:visited,a:link {
+     color: red;
+    text-decoration: none;
+}

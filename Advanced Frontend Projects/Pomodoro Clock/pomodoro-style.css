@@ -1,0 +1,124 @@
+body {
+    background: #232526;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #232526, #414345);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #232526, #414345);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+}
+
+.container {
+    margin: 50px auto;
+}
+
+.header {
+    margin: 5px auto;
+}
+
+h1 {
+    margin: auto;
+    font-size: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    display: inline;
+    padding-top: 20px;
+}
+
+p {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.controls {
+    width: 35%;
+    margin: 10px 40px 10px 10px;
+    float: left;
+}
+
+.btn-container {
+    width: 180px;
+    float: left;
+}
+
+#break-val,
+#session-val {
+    width: 200px;
+}
+
+.break-length,
+.session-length {
+    height: 100px;
+    width: 250px;
+    margin-right: 20px;
+}
+
+.clock {
+    float: left;
+    width: 50%;
+}
+
+#time {
+    font-size: 100px;
+    width: 100%;
+    height: 125px;
+}
+
+#progress {
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+#bar {
+    width: 0;
+    height: 50px;
+    background-color: green;
+    border-radius: 5px;
+    font-size: 30px;
+}
+
+.ctrl-btn {
+    width: 400px;
+    margin: 15px auto;
+}
+
+button {
+    color: #fff;
+    font-family: inherit;
+    border-radius: 8px;
+    border: none;
+    background-color: #3a3a3a;
+    margin: 0 4px 10px 10px;
+    height: 40px;
+    width: 60px;
+    box-shadow: 0px 3px 0px 0px #222121, inset -1px -3px 0px -2px red;
+    cursor: pointer;
+}
+
+button,
+button:hover,
+button:active,
+button:visited {
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+button:active {
+    background-color: #3a3a3a;
+    box-shadow: 0px 0px 0px 0px;
+    transform: translateY(3px);
+}
+
+.cbtn {
+    width: 100px;
+    margin: 5px 10px;
+}

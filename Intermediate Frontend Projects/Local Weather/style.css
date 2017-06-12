@@ -1,0 +1,78 @@
+body{
+   background-image: url("https://images.unsplash.com/reserve/fGPqEBbuQrGjOAYy4kBz_IMGP5626-Edit.jpg?dpr=1&auto=format&fit=crop&w=1500&h=996&q=80&cs=tinysrgb&crop=");
+     font-family: 'Open Sans', sans-serif !important;
+}
+.container{
+    max-width: 730px;
+}
+
+.header{
+    text-align: center;
+    margin-top: 10%;
+}
+
+h2{
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.w-text{
+    font-family: 'Muli', sans-serif;
+}
+
+#weather-det{
+    font-size: 22px;
+}
+
+#weather-set{
+    font-size: 30px;
+    cursor: pointer;
+    display: inline;
+}
+
+#weather-temp{
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+#set-new-loc, #set-def-loc{
+    cursor: pointer;
+}
+
+#set-new-loc:hover, #set-def-loc:hover{
+    color:red;
+}
+
+.row{
+    background-color: azure;
+    border-radius: 5px;
+    padding: 5%; 
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+td:nth-child(even){
+    text-align: right;
+}
+
+td:nth-child(odd){
+    font-weight: bold;
+}
+
+table {
+    margin-top: 15px;
+    width: 100%;
+}
+
+td,tr{
+    padding: 5px;
+}

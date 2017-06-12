@@ -1,0 +1,161 @@
+body {
+    color: #333;
+    font-family: "Lato";
+}
+
+
+/*navbar*/
+
+.my-nav li {
+    width: 33.33%;
+    padding: 0px;
+    display: inline-block;
+    border-radius: 0px;
+}
+
+.my-nav li a {
+    margin: 0px;
+    border-radius: 0px;
+}
+
+.my-nav li a:active {
+    border-radius: 0px;
+}
+
+
+/*search*/
+
+.move-text {
+    position: fixed;
+    top: 90%;
+    right: 5%;
+}
+
+.searchbox {
+    position: relative;
+    min-width: 100px;
+    width: 0%;
+    height: 50px;
+    float: right;
+    overflow: hidden;
+    -webkit-transition: width 0.3s;
+    -moz-transition: width 0.3s;
+    -ms-transition: width 0.3s;
+    -o-transition: width 0.3s;
+    transition: width 0.3s;
+}
+
+.searchbox-input {
+    top: 0;
+    right: 0;
+    border: 0;
+    outline: 0;
+    background: #dcddd8;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 0px 55px 0px 20px;
+    font-size: 20px;
+    color: red;
+}
+
+.searchbox-input::-webkit-input-placeholder {
+    color: #d74b4b;
+}
+
+.searchbox-input:-moz-placeholder {
+    color: #d74b4b;
+}
+
+.searchbox-input::-moz-placeholder {
+    color: #d74b4b;
+}
+
+.searchbox-input:-ms-input-placeholder {
+    color: #d74b4b;
+}
+
+.searchbox-icon,
+.searchbox-submit {
+    width: 100px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    top: 0;
+    font-family: verdana;
+    font-size: 22px;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    color: #dcddd8;
+    background: #172b3c;
+    border: solid red;
+}
+
+.searchbox-open {
+    width: 50%;
+}
+
+
+/*data*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul#list li,
+ul#list1 li,
+ul#list2 li {
+    display: inline-block;
+    width: 200px;
+    list-style: none;
+}
+
+@media screen and (min-width: 960px) {
+   ul#list li,
+ul#list1 li,
+ul#list2 li {
+    width: 255px;
+} 
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px;
+    border: solid white;
+}
+
+#user-details {
+    margin: 2px;
+    display: inline;
+}
+
+.user {
+    text-align: center;
+    margin: 15px;
+    border: solid;
+    border-radius: 10px;
+    height: 220px;
+    position: inherit;
+    overflow: hidden;
+}
+
+.disp-name {
+    margin-top: 20px;
+    display: inline-block;
+    font-size: 20px;
+    font-family: monospace;
+}
+
+.user a:hover, .user a:active, .user a:visited{
+    text-decoration: none;
+}
