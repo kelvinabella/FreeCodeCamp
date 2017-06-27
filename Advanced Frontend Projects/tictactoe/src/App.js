@@ -237,7 +237,6 @@ class App extends React.Component {
   }
 
   render() {
-
     return (
       <Game state={this.state}
         determineWinner={this.determineWinner}
@@ -248,7 +247,6 @@ class App extends React.Component {
       handleClick={this.handleClick}
       />
     )
-
   }
 }
 
