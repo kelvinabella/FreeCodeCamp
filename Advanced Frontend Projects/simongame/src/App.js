@@ -4,25 +4,28 @@ import './App.css';
 class Buttons extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log(this.props.state.isboxLit)
     if (this.props.state.isboxLit) {// add levels here xxzv
-      this.props.lightsOut(1500)
+      if (this.props.state.isboxClicked || this.props.state.counter > 0) {
+        this.props.lightsOut(100)
+      }else {
+        this.props.lightsOut(1000)
+      }
     }
   }
 
   render() {
     let {boxID, state, playerTurn}= this.props
     let bc = (state.level < 1 || state.isboxLit) ? "" : "bc"
-    let addClass = (c, n) => boxID === n ? `box ${c} ${bc} ${c}-on`: `box ${c} ${bc}`
+    let addClass = (c, n) => (boxID === n || state.win) ? `box ${c} ${bc} ${c}-on`: `box ${c} ${bc}`
     return (
       <div>
         <div className="top">
-          <div onClick={()=>playerTurn(0)} className={addClass("green", 0)} />
-          <div onClick={()=>playerTurn(1)} className={addClass("red", 1)} />
+          <div onClick={playerTurn?()=>playerTurn(0):null} className={addClass("green", 0)} />
+          <div onClick={playerTurn?()=>playerTurn(1):null} className={addClass("red", 1)} />
         </div>
         <div className="bottom">
-          <div onClick={()=>playerTurn(2)} className={addClass("yellow", 2)} />
-          <div onClick={()=>playerTurn(3)} className={addClass("blue", 3)} />
+          <div onClick={playerTurn?()=>playerTurn(2):null} className={addClass("yellow", 2)} />
+          <div onClick={playerTurn?()=>playerTurn(3):null} className={addClass("blue", 3)} />
         </div>
       </div>
     )
@@ -31,22 +34,15 @@ class Buttons extends React.Component {
 
 class Controls extends React.Component {
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.state.switchedStart && (this.props.state.switchedOn===prevProps.state.switchedOn)){
-      setTimeout(()=>{
-        // console.log(this.props.state.level+1)
-        this.props.addLevel(this.props.state.level+1)
-      }, 1500)
-    }
-  }
   render() {
     let {on, strictMode, startGame, setStrictMode, state} = this.props
     let level = state.level < 10 ? `0${state.level}` : state.level
+
     return (
       <div>
         <div className="controls">
           <div className="count">
-            <p className={`p-r ${on}`}>{level}</p>
+            <p className={`p-r ${on}`}>{state.error? "XX" : state.win ? "WIN" : level}</p>
           </div>
           COUNT
         </div>
@@ -88,7 +84,9 @@ class App extends React.Component {
         boxLit: null,
         boxClicked: null,
         isboxClicked: false,
-        isboxLit: false
+        isboxLit: false,
+        counter: 0,
+        win: false
       }
     }
     this.toggleONSwitch = this.toggleONSwitch.bind(this)
@@ -97,6 +95,15 @@ class App extends React.Component {
     this.addLevel = this.addLevel.bind(this)
     this.lightsOut = this.lightsOut.bind(this)
     this.playerTurn = this.playerTurn.bind(this)
+    this.repeatPattern = this.repeatPattern.bind(this)
+    this.gameWon = this.gameWon.bind(this)
+    this.playAudio = this.playAudio.bind(this)
+
+    this.audioGreen = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3')
+    this.audioRed = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3')
+    this.audioYellow = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3')
+    this.audioBlue = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
+
   }
 
   setStrictMode() {
@@ -113,12 +120,14 @@ class App extends React.Component {
       switchedOn: !state.switchedOn,
       game: {
         levelCount: 0,
-        randomData: Array(20).fill(null),
+        randomData: Array(2).fill(null),
         playerData: [],
         boxLit: null,
         boxClicked: null,
         isboxClicked: false,
-        isboxLit: false
+        isboxLit: false,
+        counter: 0,
+        win: false
       }
     }))
   }
@@ -128,7 +137,6 @@ class App extends React.Component {
     this.state.game.randomData.forEach((e)=> randArr.push(Math.round(Math.random()*3)))
 
     this.setState((state, props) => ({
-      strictOn: false,
       switchedStart: true,
       game: {
         levelCount: 0,
@@ -137,20 +145,24 @@ class App extends React.Component {
         boxLit: null,
         boxClicked: null,
         isboxClicked: false,
-        isboxLit: false
+        isboxLit: false,
+        counter: 0,
+        isError: false,
+        win: false
       }
     }))
+
+    setTimeout(()=>{
+      this.addLevel(1)
+      this.repeatPattern(1)
+    }, 1500)
   }
 
   addLevel(l){
-    console.log([l-1])
     this.setState((state, props) => ({
-      switchedStart: false,
       game: {
         ...state.game,
         levelCount: l,
-        boxLit: state.game.randomData[l-1],
-        isboxLit: true
       }
     }))
   }
@@ -161,61 +173,159 @@ class App extends React.Component {
         game: {
           ...state.game,
           boxLit: null,
-          isboxLit: false
+          isboxLit: false,
+          isboxClicked: false
         }
       }))
     }, t)
   }
 
-  playerTurn(i) {
-    let a = []
-    if(i === this.state.game.randomData[this.state.game.levelCount-1]) {
-      // console.log(1)
-      a = this.state.game.playerData.slice()
-      a[this.state.game.levelCount-1] = i
-      let x = 0
-      let intervalID = setInterval(()=> {
-      this.addLevel(++x)
-      // console.log(x)
-      if (x === 2) {
-        clearInterval(intervalID)
+  repeatPattern(i){
+    this.setState((state, props) => ({
+      game: {
+        ...state.game,
+        boxLit: state.game.randomData[i-1],
+        isboxLit: true,
+        isError: false
       }
-    }, 1000)
-    //   this.setState((state, props) => ({
-    //   game: {
-    //     ...state.game,
-    //     playerData: a,
-    //     boxClicked: i,
-    //     isboxClicked: true
-    //   }
-    // }))
+    }))
+  this.playAudio(this.state.game.randomData[i-1])
 
-
-    } else {
-      console.log(2)
-    }
   }
 
+  playerTurn(i) {
+    this.playAudio(i)
+    let a = this.state.game.playerData.slice(), matched = true
+
+    if(i !== this.state.game.randomData[this.state.game.counter]) {
+        matched = false
+    } else {
+      a[this.state.game.levelCount-1] = i
+    }
+    if(matched && this.state.game.counter === this.state.game.levelCount-1) {
+
+     if(this.state.game.playerData.length+1 === this.state.game.randomData.length) {
+      this.gameWon()
+      setTimeout(()=>{
+        this.startGame()
+      }, 3000)
+     }else {
+
+      let x = 0
+      setTimeout(()=>{
+        this.addLevel(this.state.game.levelCount+1)
+      }, 1000)
+      let intervalID = setInterval(()=> {
+      this.repeatPattern(++x)
+      if (x === this.state.game.levelCount) {
+        clearInterval(intervalID)
+      }
+      }, 2000) // make faaster as level goes up
+
+      this.setState((state, props) => ({
+      game: {
+        ...state.game,
+        playerData: a,
+        boxClicked: i,
+        isboxClicked: true,
+        boxLit: i,
+        isboxLit: true,
+        counter: 0
+      }
+    }))
+    }
+  } else if(matched && this.state.game.counter !== this.state.game.levelCount-1) {
+
+      this.setState((state, props) => ({
+        game: {
+          ...state.game,
+          boxLit: i,
+          isboxLit: true,
+          counter: state.game.counter + 1
+        }
+      }))
+
+  } else {
+      if(this.state.strictOn) {
+        this.setState((state, props) => ({
+          game: {
+            ...state.game,
+            isError: true
+          }
+        }))
+        setTimeout(()=>this.startGame(), 1000)
+      } else {
+      let y = 0
+      let intervalID = setInterval(()=> {
+        this.repeatPattern(++y)
+        if (y === this.state.game.levelCount) {
+          clearInterval(intervalID)
+        }
+      }, 1500)
+
+      this.setState((state, props) => ({
+        game: {
+          ...state.game,
+          playerData: a,
+          boxClicked: i,
+          boxLit: i,
+          isboxLit: true,
+          counter: 0,
+          isError: true
+        }
+      }))}
+  }
+}
+
+  gameWon(){
+    this.setState((state, props) => ({
+      game: {
+        ...state.game,
+        win: true
+      }
+    }))
+  }
+
+  playAudio(i) {
+    switch (i) {
+      case 0:
+        this.audioGreen.play()
+        break
+      case 1:
+        this.audioRed.play()
+        break
+      case 2:
+        this.audioYellow.play()
+        break
+      case 3:
+        this.audioBlue.play()
+        break
+      default:
+        break
+    }
+  }
 
   render() {
     const {switchedOn, strictOn, switchedStart, game} = this.state
     const addFunction = (f) => switchedOn ? f: null
     const addClass = (s, c) => (s && switchedOn) ? c : ""
+
     return (
       <div className="App">
         <Buttons boxID={game.boxLit}
-          state={{level:game.levelCount, isboxLit: game.isboxLit}}
+          state={{level:game.levelCount, isboxLit: game.isboxLit, isboxClicked: game.isboxClicked, counter: game.counter, win: game.win}}
           lightsOut={addFunction(this.lightsOut)}
-          playerTurn={addFunction(this.playerTurn)}
+          playerTurn={switchedStart?addFunction(this.playerTurn):null}
         />
         <div className="middle">
           <h1>Simon<sup>&reg;</sup></h1>
           <Controls on={addClass(switchedOn, "p-wh")}
             strictMode={addClass(strictOn, "led-on")}
             setStrictMode={addFunction(this.setStrictMode)}
-            startGame={switchedStart?null:addFunction(this.startGame)}
+            startGame={addFunction(this.startGame)}
             addLevel={addFunction(this.addLevel)}
-            state={{switchedStart, switchedOn, level: game.levelCount}}
+            repeatPattern={addFunction(this.repeatPattern)}
+            state={{switchedStart, switchedOn, level: game.levelCount, error: game.isError, win: game.win}}
           />
           <Switch on={addClass(switchedOn, "on")} toggleONSwitch={this.toggleONSwitch} />
         </div>
