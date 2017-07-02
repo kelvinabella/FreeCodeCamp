@@ -1,3 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #9D8319;
+}
+
+p{
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   margin: 80px auto;
   position: relative;
@@ -7,7 +19,6 @@
   box-sizing: content-box;
   width: 408px;
   height: 408px;
-  /*border: 16px solid #111111;*/
   border-radius: 100%;
   padding: 0;
   background-color: #111111;
@@ -27,7 +38,6 @@
 
 .green {
   border-right: 8px solid #111111;
-  /*border-bottom: 8px solid #111111;*/
   border-top-left-radius: 100%;
   background-color: #36a51d;
 }
@@ -38,7 +48,6 @@
 
 .red {
   border-left: 8px solid #111111;
-  /*border-bottom: 8px solid #111111;*/
   border-top-right-radius: 100%;
   background-color: #bb0f0f;
 }
@@ -48,9 +57,7 @@
 }
 
 .yellow {
-  /*border-top: 8px solid #111111;*/
   border-right: 8px solid #111111;
-  /*border-bottom: 1px solid #111111;*/
   border-bottom-left-radius: 100%;
   background-color: #c5af12;
 }
@@ -60,21 +67,13 @@
 }
 
 .blue {
-  /*border-top: 8px solid #111111;*/
   border-left: 8px solid #111111;
-  /*border-bottom: 1px solid #111111;*/
   border-bottom-right-radius: 100%;
   background-color: #1019a0;
 }
 
 .blue-on {
   background-color: #1b25fc;
-}
-
-.top {
-  /*margin-bottom: -4px;*/
-  /*padding: 0;*/
-  /*border-bottom: 16px solid #111111;*/
 }
 
 .bottom {
@@ -231,25 +230,6 @@
   vertical-align: middle;
   display: table-cell;
 }
-
-/*.blink {
-  color: #fff;
-  animation: blink 500ms steps(1) 1;
-  -webkit-animation: blink 500ms steps(1) 1;
-}
-
-@keyframes blink {
-  50% {
-    color: transparent;
-    }
-}
-
-@-webkit-keyframes blink {
- 50% {
-  color: transparent;
-  }
-}*/
-
 
 @media screen and (max-width: 500px) {
   .App {
